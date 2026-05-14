@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Audiowide&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-main: "Anonymous Pro", "sans-serif";
+    --font-header: "Audiowide", "sans-serif";
+
+    --color-black: #171717;
+    --color-white: #d1d5dc;
+    --color-blue: #3D649B;
+    --color-darkBlue: #0E0637;
+}
+
+body {
+    @apply text-black text-base md:text-lg font-main;
+    background: radial-gradient(circle, rgba(107, 193, 255, 1) 0%, rgba(84, 146, 205, 1) 25%, rgba(61, 100, 155, 1) 50%, rgba(37, 53, 105, 1) 75%, rgba(14, 6, 55, 1) 100%);
+}
+
+h1 {
+    @apply font-header text-2xl lg:text-4xl;
+}
+
+h2 {
+    @apply font-main text-xl lg:text-3xl;
+}
+
+h3 {
+    @apply font-main font-semibold text-lg lg:text-2xl;
+}
+
+h4 {
+    @apply font-main font-semibold text-base lg:text-xl;
+}
+
+@layer components {
+    .styleBefore {
+        @apply before:content-[''] before:absolute before:top-0 before:bottom-0 before:left-0 before:w-0.5 before:bg-white;
+    }
+
+    .styleAfter {
+        @apply after:content-[''] after:absolute after:top-0 after:bottom-0 after:right-0 after:w-0.5 after:bg-white;
+    }
+
+    .styleSection {
+        @apply mx-4 my-5 md:mx-8 lg:mx-10 xl:mx-20 md:my-10 bg-white/20 p-2 md:p-10 rounded-2xl flex flex-col gap-5 md:gap-10;
+    }
+
+}
+
+
+@keyframes slideDownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.excursion-anim {
+    animation: slideDownFade 0.4s ease-out forwards;
+}
+
+
+
+
+/* Базовый стиль для всех ссылок навигации, чтобы линия позиционировалась относительно них */
+nav a {
+    position: relative;
+}
+
+.styleAfterNav {
+    font-weight: bold;
+}
+
+/* Стилизуем и анимируем именно псевдоэлемент */
+.styleAfterNav::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    /* прижимаем к нижнему краю */
+    height: 2px;
+    background-color: white;
+    /* твой red-300 */
+
+    /* Запускаем анимацию */
+    animation: left-right 0.3s ease forwards;
+}
+
+@keyframes left-right {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/*
+либо можно так написать:
+const linkState = ({ isActive }) => 
+  isActive 
+    ? "font-bold relative after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:bg-red-300 after:animate-[left-right_0.3s_ease_forwards]" 
+    : "relative";
+*/
