@@ -2,8 +2,8 @@
 
 export default function Input({ label, labelPosition = "top", value, onChange, placeholder = "", type = "text", variant = "black", className = "", error, ...props }) {
 
-    const basicStyle = "w-full py-2 px-3 bg-white/20 border-2 rounded-3xl transition";
-
+    const basicStyle = "w-full py-2 px-3 bg-white/20 border-2 rounded-3xl transition disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
+   
     const variants = {
         white: "text-white border-white",
         black: "text-black border-black"
