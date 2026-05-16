@@ -34,7 +34,7 @@ export default function Header({ user, onLogout }) {
 
                 {/* Кнопка бургера (только для мобилок) */}
                 <button 
-                    className="text-white md:hidden p-2" 
+                    className="text-white lg:hidden p-2" 
                     onClick={toggleMenu}
                 >
                     {isOpen ? <HiX size={32} /> : <HiMenu size={32} />}
@@ -43,8 +43,8 @@ export default function Header({ user, onLogout }) {
                 {/* Навигация */}
                 <nav className={`
                     ${isOpen ? "flex" : "hidden"} 
-                    md:flex flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto 
-                    bg-black/90 md:bg-transparent p-5 md:p-0 gap-5 items-center text-white
+                    lg:flex flex-col lg:flex-row absolute lg:relative top-full left-0 w-full lg:w-auto 
+                    bg-black/90 lg:bg-transparent p-5 lg:p-0 gap-5 items-center text-white
                 `}>
                     <NavLink to="/valoraciones" className={linkState} onClick={() => setIsOpen(false)}>
                         valoraciones

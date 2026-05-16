@@ -21,7 +21,7 @@ export default function SobreNosotros() {
                 />
             </div>
 
-            <div className="lg:col-span-3 text-black bg-white/20 rounded-2xl p-6 lg:p-10 flex flex-col gap-5 justify-center items-center text-center lg:text-left">
+            <div className="lg:col-span-3 text-black bg-white/20 rounded-2xl p-6 flex flex-col gap-5 justify-center items-center text-center lg:text-left">
                 <h1>¿Quiénes somos?</h1>
                 <p> 
                     En FutureTravel creemos que viajar no debería ser complicado.
@@ -33,7 +33,7 @@ export default function SobreNosotros() {
 
             {/* --- ВТОРОЙ РЯД --- */}
 
-            <div className="text-black lg:col-span-3 bg-white/20 rounded-2xl p-6 lg:p-10 flex flex-col gap-5 justify-center items-center text-center lg:text-left">
+            <div className="text-black lg:col-span-3 bg-white/20 rounded-2xl p-6 flex flex-col gap-5 justify-center items-center text-center lg:text-left">
                 <h1>¿Por qué elegir FutureTravel?</h1>
                 <ul className="list-none flex flex-col gap-2">
                     <li>Rutas únicas por varias ciudades en un solo viaje</li>
@@ -45,26 +45,26 @@ export default function SobreNosotros() {
             </div>
 
             {/* Статистика 1 */}
-            <div className="lg:col-span-1 bg-black/40 rounded-2xl p-6 flex flex-col justify-between items-center min-h-50">
+            <div className="lg:col-span-1 bg-black/40 rounded-2xl p-6 flex flex-col justify-center items-center gap-8 min-h-50">
                 <div className="flex flex-col items-center text-white">
                     <h1>300+</h1>
                     <p>Viajes realizados</p>
                 </div>
                 <Link to="/" className="w-full">
-                    <Button className="w-full">ver tours</Button>
+                    <Button className="w-fit mx-auto">ver tours</Button>
                 </Link>
             </div>
 
 
             {/* --- ТРЕТИЙ РЯД --- */}
 
-            <div className="lg:col-span-1 bg-black/40 rounded-2xl p-6 flex flex-col justify-between items-center min-h-50">
+            <div className="lg:col-span-1 bg-black/40 rounded-2xl p-6 flex flex-col justify-center items-center gap-8 min-h-50">
                 <div className="flex flex-col items-center text-white">
                     <h1>1500+</h1>
                     <p>Viajeros felices</p>
                 </div>
                 <Link to="/valoraciones" className="w-full">
-                    <Button className="w-full">ver valoraciones</Button>
+                    <Button className="w-fit mx-auto">ver valoraciones</Button>
                 </Link>
             </div>
 
