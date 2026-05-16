@@ -1,15 +1,49 @@
+import { useState, useEffect } from "react"
 import { NavLink } from "react-router-dom"
 
 import madrid from "../../assets/fotoTour/spain/madrid.png"
 
 import Button from "../../components/ui/Button"
 import Input from "../../components/ui/Input"
-
+import { API_URL } from "../../config"
 
 const linkState = ({ isActive }) => isActive ? "font-bold" : "";
 
 export default function Configuracion() {
 
+    const [nombre, setNombre] = useState("");
+    const [apellidos, setApellidos] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [telefono, setTelefono] = useState("");
+    const [loading, setLoading] = useState(true);
+
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        fetch(`${API_URL}/user`, {
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) throw new Error("Error al obtener perfil");
+                return res.json();
+            })
+            .then(data => {
+                setNombre(data.name || "");
+                setApellidos(data.surname || "");
+                setCorreo(data.email || "");
+                setTelefono(data.phone || "");
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            });
+    }, [token]);
+
+    if (loading) return <div className="text-white text-center py-20">Cargando perfil...</div>;
 
     return (
         <div className="flex py-10 px-14 gap-10 ">
@@ -41,16 +75,34 @@ export default function Configuracion() {
                     </div>
                 </div>
 
-                <form className="w-full grid grid-cols-2 gap-5" action="">
-                    <Input placeholder="Nombre" />
-                    <Input placeholder="Apellidos" />
-                    <Input placeholder="Correo" />
-                    <Input placeholder="Telefono" />
+                <form className="w-full grid grid-cols-2 gap-5" onSubmit={(e) => e.preventDefault()}>
+                    <Input 
+                        placeholder="Nombre" 
+                        value={nombre} 
+                        onChange={(e) => setNombre(e.target.value)} 
+                    />
+                    <Input 
+                        placeholder="Apellidos" 
+                        value={apellidos} 
+                        onChange={(e) => setApellidos(e.target.value)} 
+                    />
+                    <Input 
+                        placeholder="Correo" 
+                        value={correo} 
+                        onChange={(e) => setCorreo(e.target.value)} 
+                        disabled
+                    />
+                    <Input 
+                        placeholder="Telefono" 
+                        value={telefono} 
+                        onChange={(e) => setTelefono(e.target.value)} 
+                    />
+                    
                     <Input placeholder="Apodo" />
                     <Input placeholder="F.D.N." />
 
                     <div className="col-span-2 flex justify-center">
-                        <Button>confirmar</Button>
+                        <Button type="submit">confirmar</Button>
                     </div>
                 </form>
             </div>

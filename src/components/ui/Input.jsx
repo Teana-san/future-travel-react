@@ -6,7 +6,7 @@ export default function Input({ label, labelPosition = "top", value, onChange, p
 
     const variants = {
         white: "text-white border-white disabled:!text-white/40 disabled:!border-white/30",
-        black: "text-black border-black disabled:!text-gray-400 disabled:!border-gray-300"
+        black: "text-black border-black disabled:!text-black/50 disabled:!border-gray-300"
     }
 
     const styleWrapper = labelPosition === "left" ? "w-full flex items-center gap-4" : "w-full flex flex-col gap-1";
