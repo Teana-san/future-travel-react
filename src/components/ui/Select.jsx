@@ -3,7 +3,7 @@ import down from "../../assets/svg/down_black.svg"
 
 export default function Select({ opciones = [], iconUrl = down, label, labelPosition = "left", value, name, onChange, placeholder = "", variant = "white", className = "", error, ...props }) {
 
-    const basicStyle = "w-full py-2 px-3 border-2 rounded-3xl appearance-none pr-10 bg-no-repeat bg-[length:16px] bg-[right_1rem_center]";
+    const basicStyle = "w-full py-2 px-3 border-2 rounded-3xl appearance-none pr-10 bg-no-repeat bg-[length:16px] bg-[right_1rem_center] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
 
     const variants = {
         white: "border-white bg-white/20",
