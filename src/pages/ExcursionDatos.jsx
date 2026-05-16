@@ -209,7 +209,11 @@ export default function ExcursionDatos() {
                         <Input placeholder="Nombre" value={nombre} name="nombre" onChange={handleNombre} />
                         <Input placeholder="Apellido" value={apellido} name="apellido" onChange={handleApellido} />
                         <Input placeholder="Correo" value={email} name="email" onChange={handleEmail} />
-                        <Input placeholder="Telefono" value={telefono} name="telefono" onChange={handleTelefono} />
+                        <input placeholder="Telefono" type="tel" name="telefono" required pattern="[0-9\s\-\+\(\)]+"
+                            title="El teléfono solo debe contener números, espacios o símbolos (+, -, parentesis)"
+                            value={telefono}
+                            onChange={handleTelefono}
+                        />
                     </form>
                     <p>Estos datos se utilizarán para confirmar la reserva y crear una cuenta personal.</p>
 

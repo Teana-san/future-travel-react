@@ -162,8 +162,8 @@ export default function AdminResCambiar() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-10">
-                    <Input className="capitalize" label={"Pais del tour"} value={pais} onChange={e => setPais(e.target.value)} />
-                    <Input label={"Nombre del tour"} value={titulo} onChange={e => setTitulo(e.target.value)} />
+                    <Input className="capitalize" label={"Pais del tour"} value={pais} disabled />
+                    <Input label={"Nombre del tour"} value={titulo} disabled />
                 </div>
 
                 <div className="grid grid-cols-3 gap-10">
@@ -175,7 +175,7 @@ export default function AdminResCambiar() {
                 <div className="grid grid-cols-3 gap-10">
                     <Select labelPosition="top" variant="black" label={"Cama"} value={cama} opciones={camas} onChange={e => setCama(e.target.value)} />
                     <Select labelPosition="top" variant="black" label={"Cama Extra"} value={camaExtra} opciones={opcionesCamaExtra} onChange={e => setCamaExtra(e.target.value)} />
-                    <Input label={"Precio total €"} value={totalPrecio} onChange={e => setTotalPrecio(e.target.value)} />
+                    <Input label={"Precio total €"} value={totalPrecio} disabled />
                 </div>
 
                 {nombre2 && apellido2 && (
