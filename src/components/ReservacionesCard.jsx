@@ -7,7 +7,7 @@ export default function ReservacionesCard({ reserva }) {
     if (!reserva) return null;
 
     return (
-        <div className="w-full flex justify-between items-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+        <div className="w-full border-2 border-transparent flex justify-between items-center p-4 bg-white/20 rounded-xl hover:bg-white/10 hover:border-2 hover:border-black/20 transition-colors">
             <div className="flex flex-col gap-1">
 
                 <h3 className="text-xl font-bold">{reserva.tour?.titulo || 'Tour'}</h3>
