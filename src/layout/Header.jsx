@@ -49,11 +49,11 @@ export default function Header({ user, onLogout }) {
                     <NavLink to="/valoraciones" className={linkState} onClick={() => setIsOpen(false)}>
                         valoraciones
                     </NavLink>
-                    <NavLink to="/contacto" className={linkState} onClick={() => setIsOpen(false)}>
-                        contacto
-                    </NavLink>
                     <NavLink to="/sobre-nosotros" className={linkState} onClick={() => setIsOpen(false)}>
                         sobre nosotros
+                    </NavLink>
+                    <NavLink to="/contacto" className={linkState} onClick={() => setIsOpen(false)}>
+                        contacto
                     </NavLink>
 
                     {user ? (

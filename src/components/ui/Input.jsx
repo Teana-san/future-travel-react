@@ -19,7 +19,6 @@ export default function Input({ label, labelPosition = "top", value, onChange, p
             <div className={styleWrapper}>
                 {label && <label className="font-main text-xl">{label}</label>}
 
-                {/* Создаем визуальную оболочку, которая имитирует инпут */}
                 <label className={`${basicStyle} ${variants[variant]} ${states} ${className}`}>
                     <span className="text-sm opacity-70">
                         {/* Если файл выбран (value — это объект File), покажем его имя, иначе текст */}
