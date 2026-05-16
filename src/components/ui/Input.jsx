@@ -2,11 +2,11 @@
 
 export default function Input({ label, labelPosition = "top", value, onChange, placeholder = "", type = "text", variant = "black", className = "", error, ...props }) {
 
-    const basicStyle = "w-full py-2 px-3 bg-white/20 border-2 rounded-3xl transition disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
-   
+    const basicStyle = "w-full py-2 px-3 bg-white/20 border-2 rounded-3xl transition";
+
     const variants = {
-        white: "text-white border-white",
-        black: "text-black border-black"
+        white: "text-white border-white disabled:!text-white/40 disabled:!border-white/30",
+        black: "text-black border-black disabled:!text-gray-400 disabled:!border-gray-300"
     }
 
     const styleWrapper = labelPosition === "left" ? "w-full flex items-center gap-4" : "w-full flex flex-col gap-1";
