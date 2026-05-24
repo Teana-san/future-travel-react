@@ -135,13 +135,19 @@ export default function Contacto() {
 
                         <div className="flex flex-col gap-5 w-full h-full">
                             <Input variant="white" placeholder="Nombre*" value={nombre} onChange={handleNombreChange} error={errorNombre} required />
+
                             <Input
+                                type="email"
                                 variant="white"
                                 placeholder="Correo*"
-                                type="email"
                                 value={correo}
-                                onChange={(e) => { setCorreo(e.target.value); if (errorCorreo) setErrorCorreo(""); }}
-                                error={errorCorreo} required />
+                                onChange={(e) => {
+                                    setCorreo(e.target.value);
+                                    if (errorCorreo) setErrorCorreo("");
+                                }}
+                                error={errorCorreo}
+                                required
+                            />
 
                             <div className="w-full flex flex-col gap-1">
                                 <Select
