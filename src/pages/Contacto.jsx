@@ -16,7 +16,11 @@ export default function Contacto() {
     const [paisSeleccionado, setPaisSeleccionado] = useState("");
     const [asunto, setAsunto] = useState("");
 
+    const [nombre, setNombre] = useState("");
+    const [telefono, setTelefono] = useState("");
+
     const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     function handlePais(e) {
         setPaisSeleccionado(e.target.value);
@@ -24,6 +28,18 @@ export default function Contacto() {
 
     function handleAsunto(e) {
         setAsunto(e.target.value);
+    }
+
+    function handleNombreChange(e) {
+        const value = e.target.value;
+        const onlyLetters = value.replace(/[^A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]/g, "");
+        setNombre(onlyLetters);
+    }
+
+    function handleTelefonoChange(e) {
+        const value = e.target.value;
+        const onlyNumbers = value.replace(/[^0-9+\s\-()]/g, "");
+        setTelefono(onlyNumbers);
     }
 
     function handleSubmit(e) {
@@ -70,9 +86,9 @@ export default function Contacto() {
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-5 place-items-center" action="">
 
                         <div className="flex flex-col gap-5 w-full h-full">
-                            <Input variant="white" placeholder="Nombre*" pattern="^[A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]+$" required />
+                            <Input variant="white" placeholder="Nombre*" onChange={handleNombreChange} required />
                             <Input variant="white" placeholder="Correo*" required />
-                            
+
                             <Select className="text-white" name="country" opciones={paises} placeholder="País de interes" value={paisSeleccionado} onChange={handlePais} />
                             <Select className="text-white" name="questions" opciones={asuntos} placeholder="Asunto" value={asunto} onChange={handleAsunto} />
                         </div>
@@ -92,13 +108,13 @@ export default function Contacto() {
                 </div>
             </div>
 
-                    <ModalForm 
-                    isOpen={isModalOpen} 
-                    onClose={() => setIsModalOpen(false)} 
-                    title={"Mensage enviado!"} 
-                    success={true}>
-                        Grasias por tu mensage. Nos ponemos en contacto contigo lo antes posible.
-                    </ModalForm>
+            <ModalForm
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title={"Mensage enviado!"}
+                success={true}>
+                Grasias por tu mensage. Nos ponemos en contacto contigo lo antes posible.
+            </ModalForm>
 
         </div>
     )
