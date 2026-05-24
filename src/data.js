@@ -66,26 +66,3 @@ export const fechas = {
         { id: 9, label: "16-09-2026 - 19-09-2026", value: "septiembre3", precio: 400 }
     ]
 }
-
-export const pedidosEjemplo = [
-    {
-        id: 1,
-        usuario: "Ivan Ivanov",
-        pais: "Spain",
-        tour: "Madrid Imperial",
-        fechas: "01-03-2026 / 04-03-2026",
-        personas: 2,
-        estado: "Confirmado",
-        total: 600
-    },
-    {
-        id: 2,
-        usuario: "Maria Garcia",
-        pais: "Peru",
-        tour: "Machu Picchu Mágico",
-        fechas: "09-06-2026 / 12-06-2026",
-        personas: 1,
-        estado: "Pendiente",
-        total: 500
-    }
-];

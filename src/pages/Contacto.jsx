@@ -207,9 +207,9 @@ export default function Contacto() {
                             )}
                         </div>
 
-                        <Button type="submit">
-                            contactanos
-                        </Button>
+                        <div className="flex items-center justify-center md:col-span-2">
+                            <Button type="submit">contactanos</Button>
+                        </div>
                     </form>
                 </div>
             </div>
