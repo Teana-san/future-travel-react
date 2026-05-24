@@ -263,8 +263,8 @@ export default function Excursion() {
                     <form onSubmit={handleSubmit} action="" className="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
 
                         <div className="flex flex-col gap-5">
-                            <Input placeholder="Nombre*" value={valores.nombre} onChange={handleTextoChange} error={errores.nombre} variant="white" required />
-                            <Input placeholder="Apellidos*" value={valores.apellido} onChange={handleTextoChange} error={errores.apellido} variant="white" required />
+                            <Input name="nombre" placeholder="Nombre*" value={valores.nombre} onChange={handleTextoChange} error={errores.nombre} variant="white" required />
+                            <Input name="apellido" placeholder="Apellidos*" value={valores.apellido} onChange={handleTextoChange} error={errores.apellido} variant="white" required />
                             <Input placeholder="Correo*" variant="white" required />
                         </div>
 
