@@ -32,12 +32,14 @@ export default function Excursion() {
 
     const [valores, setValores] = useState({
         nombre: "",
-        apellido: ""
+        apellido: "",
+        correo: ""
     });
 
     const [errores, setErrores] = useState({
         nombre: "",
-        apellido: ""
+        apellido: "",
+        correo: ""
     });
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -116,6 +118,12 @@ export default function Excursion() {
     function handleTextoChange(e) {
         const { name, value } = e.target;
 
+        if (name === "correo") {
+            if (errores.correo) setErrores(prev => ({ ...prev, correo: "" })); // убираем ошибку при вводе
+            setValores(prev => ({ ...prev, correo: value }));
+            return; 
+        }
+
         if (/[0-9]/.test(value)) {
             setErrores(prev => ({
                 ...prev,
@@ -133,13 +141,47 @@ export default function Excursion() {
         }));
     }
 
-    function handleSubmit(e) {
+function handleSubmit(e) {
         e.preventDefault();
 
+        let valido = true;
+
+        // 1. Проверка имени
+        if (!valores.nombre.trim()) {
+            setErrores(prev => ({ ...prev, nombre: "El nombre es obligatorio" }));
+            valido = false;
+        }
+
+        // 2. Проверка фамилии
+        if (!valores.apellido.trim()) {
+            setErrores(prev => ({ ...prev, apellido: "El apellido es obligatorio" }));
+            valido = false;
+        }
+
+        // 3. Проверка почты регуляркой
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!valores.correo.trim()) {
+            setErrores(prev => ({ ...prev, correo: "El correo es obligatorio" }));
+            valido = false;
+        } else if (!emailRegex.test(valores.correo)) {
+            setErrores(prev => ({ ...prev, correo: "Por favor, introduce un correo válido" }));
+            valido = false;
+        } else {
+            setErrores(prev => ({ ...prev, correo: "" }));
+        }
+
+        // Прерываем отправку, если что-то не так
+        if (!valido) return;
+
+        // Если всё успешно:
         setIsModalOpen(true);
 
-        setValores({ nombre: "", apellido: "" });
-        setErrores({ nombre: "", apellido: "" });
+        // Очищаем стейты
+        setValores({ nombre: "", apellido: "", correo: "" });
+        setErrores({ nombre: "", apellido: "", correo: "" });
+
+        // Очищаем саму форму только в самом конце!
+        e.target.reset();
     }
 
     return (
@@ -265,7 +307,16 @@ export default function Excursion() {
                         <div className="flex flex-col gap-5">
                             <Input name="nombre" placeholder="Nombre*" value={valores.nombre} onChange={handleTextoChange} error={errores.nombre} variant="white" required />
                             <Input name="apellido" placeholder="Apellidos*" value={valores.apellido} onChange={handleTextoChange} error={errores.apellido} variant="white" required />
-                            <Input type="email" placeholder="Correo*" variant="white" required />
+                           <Input 
+                                type="email" 
+                                name="correo"
+                                placeholder="Correo*" 
+                                value={valores.correo}
+                                onChange={handleTextoChange}
+                                error={errores.correo}
+                                variant="white" 
+                                required 
+                            />
                         </div>
 
                         <div>

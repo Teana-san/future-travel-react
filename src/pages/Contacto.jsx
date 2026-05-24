@@ -80,10 +80,8 @@ export default function Contacto() {
             setErrorAsunto("");
         }
 
-        // Проверяем валидность ДО сброса формы!
         if (!valido) return;
 
-        // Если всё отлично, открываем модалку и сбрасываем состояние
         setIsModalOpen(true);
 
         setNombre("");
@@ -96,7 +94,6 @@ export default function Contacto() {
         setErrorPais("");
         setErrorAsunto("");
 
-        // ТЕПЕРЬ СБРОС ТУТ: очищаем форму только при успешной отправке
         e.target.reset();
     }
 
