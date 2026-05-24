@@ -114,6 +114,7 @@ export default function Excursion() {
 
 
     function handleTextoChange(e) {
+        console.log("Имя инпута:", e.target.name, "Значение:", e.target.value);
         const { name, value } = e.target;
 
         if (/[0-9]/.test(value)) {
