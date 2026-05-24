@@ -229,8 +229,8 @@ export default function Excursion() {
                     <form onSubmit={handleSubmit} action="" className="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
 
                         <div className="flex flex-col gap-5">
-                            <Input placeholder="Nombre*" variant="white" required />
-                            <Input placeholder="Apellidos*" variant="white" required />
+                            <Input placeholder="Nombre*" variant="white" pattern="^[A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]+$" required />
+                            <Input placeholder="Apellidos*" variant="white" pattern="^[A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]+$" required />
                             <Input placeholder="Correo*" variant="white" required />
                         </div>
 
