@@ -86,7 +86,7 @@ export default function Contacto() {
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-5 place-items-center" action="">
 
                         <div className="flex flex-col gap-5 w-full h-full">
-                            <Input variant="white" placeholder="Nombre*" onChange={handleNombreChange} required />
+                            <Input variant="white" placeholder="Nombre*" value={nombre} onChange={handleNombreChange} required />
                             <Input variant="white" placeholder="Correo*" required />
 
                             <Select className="text-white" name="country" opciones={paises} placeholder="País de interes" value={paisSeleccionado} onChange={handlePais} />
