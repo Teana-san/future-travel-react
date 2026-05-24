@@ -60,7 +60,7 @@ export default function GlobeElement({ onCountryClick }) {
 
 
                 // 3. Рисуем страны (полигоны)
-                polygonsData={countries.features} // Передаём массив стран.
+                polygonsData={allowedCountriesGeo.features} // Передаём массив стран.
                 polygonCapColor={(d) =>
                     d.properties.NAME === "Spain" ? 'rgba(255, 100, 100, 0.5)' :
                         d.properties.NAME === "Peru" ? 'rgba(100, 255, 100, 0.5)' :
