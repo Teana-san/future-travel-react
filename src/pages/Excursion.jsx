@@ -30,7 +30,38 @@ export default function Excursion() {
     const [mes, setMes] = useState("");
     const [dia, setDia] = useState("");
 
-    const [isModalOpen, setIsModalOpen] = useState(false); /// это для формы, срабатывает при отправке заполненной формы
+    const [valores, setValores] = useState({
+        nombre: "",
+        apellido: ""
+    });
+
+    const [errores, setErrores] = useState({
+        nombre: "",
+        apellido: ""
+    });
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+    function handleTextoChange(e) {
+        const { name, value } = e.target;
+
+        if (/[0-9]/.test(value)) {
+            setErrores(prev => ({
+                ...prev,
+                [name]: `El ${name === "nombre" ? "nombre" : "apellido"} no puede contener números`
+            }));
+        } else {
+            setErrores(prev => ({ ...prev, [name]: "" }));
+        }
+
+        const onlyLetters = value.replace(/[^A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]/g, "");
+
+        setValores(prev => ({
+            ...prev,
+            [name]: onlyLetters
+        }));
+    }
 
 
     // --- ЗАГРУЗКА ДАННЫХ ИЗ LARAVEL ---
@@ -229,8 +260,8 @@ export default function Excursion() {
                     <form onSubmit={handleSubmit} action="" className="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
 
                         <div className="flex flex-col gap-5">
-                            <Input placeholder="Nombre*" variant="white" pattern="^[A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]+$" required />
-                            <Input placeholder="Apellidos*" variant="white" pattern="^[A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]+$" required />
+                            <Input placeholder="Nombre*" value={valores.nombre} onChange={handleTextoChange} error={errores.nombre} variant="white" required />
+                            <Input placeholder="Apellidos*" value={valores.apellido} onChange={handleTextoChange} error={errores.apellido} variant="white" required />
                             <Input placeholder="Correo*" variant="white" required />
                         </div>
 

@@ -17,9 +17,7 @@ export default function Contacto() {
     const [asunto, setAsunto] = useState("");
 
     const [nombre, setNombre] = useState("");
-    const [telefono, setTelefono] = useState("");
     const [errorNombre, setErrorNombre] = useState("");
-    const [errorTelefono, setErrorTelefono] = useState("");
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -41,17 +39,6 @@ export default function Contacto() {
         }
         const onlyLetters = value.replace(/[^A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]/g, "");
         setNombre(onlyLetters);
-    }
-
-    function handleTelefonoChange(e) {
-        const value = e.target.value;
-        if (/[A-Za-zА-Яа-яЁё]/.test(value)) {
-            setErrorTelefono("El teléfono no puede contener letras");
-        } else {
-            setErrorTelefono("");
-        }
-        const onlyNumbers = value.replace(/[^0-9+\s\-()]/g, "");
-        setTelefono(onlyNumbers);
     }
 
     function handleSubmit(e) {

@@ -1,6 +1,6 @@
 
 
-export default function Input({ label, labelPosition = "top", value, onChange, pattern, placeholder = "", type = "text", variant = "black", className = "", error, ...props }) {
+export default function Input({ label, labelPosition = "top", value, onChange, placeholder = "", type = "text", variant = "black", className = "", error, ...props }) {
 
     const basicStyle = "w-full py-2 px-3 bg-white/20 border-2 rounded-3xl transition";
 
@@ -27,9 +27,8 @@ export default function Input({ label, labelPosition = "top", value, onChange, p
 
                     <input
                         type="file"
-                        className="hidden" // Прячем настоящий системный инпут
+                        className="hidden"
                         onChange={onChange}
-                        pattern={pattern}
                         {...props}
                     />
                 </label>
