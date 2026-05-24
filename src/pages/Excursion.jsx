@@ -114,7 +114,6 @@ export default function Excursion() {
 
 
     function handleTextoChange(e) {
-        console.log("Имя инпута:", e.target.name, "Значение:", e.target.value);
         const { name, value } = e.target;
 
         if (/[0-9]/.test(value)) {
@@ -266,7 +265,7 @@ export default function Excursion() {
                         <div className="flex flex-col gap-5">
                             <Input name="nombre" placeholder="Nombre*" value={valores.nombre} onChange={handleTextoChange} error={errores.nombre} variant="white" required />
                             <Input name="apellido" placeholder="Apellidos*" value={valores.apellido} onChange={handleTextoChange} error={errores.apellido} variant="white" required />
-                            <Input placeholder="Correo*" variant="white" required />
+                            <Input type="email" placeholder="Correo*" variant="white" required />
                         </div>
 
                         <div>

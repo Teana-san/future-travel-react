@@ -88,8 +88,8 @@ export default function Contacto() {
                             <Input variant="white" placeholder="Nombre*" value={nombre} onChange={handleNombreChange} error={errorNombre} required />
                             <Input variant="white" placeholder="Correo*" required />
 
-                            <Select className="text-white" name="country" opciones={paises} placeholder="País de interes" value={paisSeleccionado} onChange={handlePais} />
-                            <Select className="text-white" name="questions" opciones={asuntos} placeholder="Asunto" value={asunto} onChange={handleAsunto} />
+                            <Select className="text-white" name="country" opciones={paises} placeholder="País de interes" value={paisSeleccionado} onChange={handlePais} required />
+                            <Select className="text-white" name="questions" opciones={asuntos} placeholder="Asunto" value={asunto} onChange={handleAsunto} required />
                         </div>
 
                         <div className="flex flex-col w-full h-50 lg:h-full">
