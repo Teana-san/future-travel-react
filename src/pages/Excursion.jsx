@@ -119,7 +119,7 @@ export default function Excursion() {
         const { name, value } = e.target;
 
         if (name === "correo") {
-            if (errores.correo) setErrores(prev => ({ ...prev, correo: "" })); // убираем ошибку при вводе
+            if (errores.correo) setErrores(prev => ({ ...prev, correo: "" }));
             setValores(prev => ({ ...prev, correo: value }));
             return; 
         }
@@ -146,19 +146,16 @@ function handleSubmit(e) {
 
         let valido = true;
 
-        // 1. Проверка имени
         if (!valores.nombre.trim()) {
             setErrores(prev => ({ ...prev, nombre: "El nombre es obligatorio" }));
             valido = false;
         }
 
-        // 2. Проверка фамилии
         if (!valores.apellido.trim()) {
             setErrores(prev => ({ ...prev, apellido: "El apellido es obligatorio" }));
             valido = false;
         }
 
-        // 3. Проверка почты регуляркой
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!valores.correo.trim()) {
             setErrores(prev => ({ ...prev, correo: "El correo es obligatorio" }));
@@ -170,17 +167,13 @@ function handleSubmit(e) {
             setErrores(prev => ({ ...prev, correo: "" }));
         }
 
-        // Прерываем отправку, если что-то не так
         if (!valido) return;
 
-        // Если всё успешно:
         setIsModalOpen(true);
 
-        // Очищаем стейты
         setValores({ nombre: "", apellido: "", correo: "" });
         setErrores({ nombre: "", apellido: "", correo: "" });
 
-        // Очищаем саму форму только в самом конце!
         e.target.reset();
     }
 
