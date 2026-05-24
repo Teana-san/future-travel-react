@@ -18,6 +18,8 @@ export default function Contacto() {
 
     const [nombre, setNombre] = useState("");
     const [telefono, setTelefono] = useState("");
+    const [errorNombre, setErrorNombre] = useState("");
+    const [errorTelefono, setErrorTelefono] = useState("");
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -32,12 +34,22 @@ export default function Contacto() {
 
     function handleNombreChange(e) {
         const value = e.target.value;
+        if (/[0-9]/.test(value)) {
+            setErrorNombre("El nombre no puede contener números");
+        } else {
+            setErrorNombre("");
+        }
         const onlyLetters = value.replace(/[^A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]/g, "");
         setNombre(onlyLetters);
     }
 
     function handleTelefonoChange(e) {
         const value = e.target.value;
+        if (/[A-Za-zА-Яа-яЁё]/.test(value)) {
+            setErrorTelefono("El teléfono no puede contener letras");
+        } else {
+            setErrorTelefono("");
+        }
         const onlyNumbers = value.replace(/[^0-9+\s\-()]/g, "");
         setTelefono(onlyNumbers);
     }
@@ -86,7 +98,7 @@ export default function Contacto() {
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-5 place-items-center" action="">
 
                         <div className="flex flex-col gap-5 w-full h-full">
-                            <Input variant="white" placeholder="Nombre*" value={nombre} onChange={handleNombreChange} required />
+                            <Input variant="white" placeholder="Nombre*" value={nombre} onChange={handleNombreChange} error={errorNombre} required />
                             <Input variant="white" placeholder="Correo*" required />
 
                             <Select className="text-white" name="country" opciones={paises} placeholder="País de interes" value={paisSeleccionado} onChange={handlePais} />
