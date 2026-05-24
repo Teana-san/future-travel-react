@@ -180,7 +180,7 @@ export default function Contacto() {
                         </div>
 
                         <div className="w-full text-white">
-                            <Checkbox label="He leído y acepto la Política de Privacidad." />
+                            <Checkbox required label="He leído y acepto la Política de Privacidad." />
                         </div>
 
                         <Button type="submit">

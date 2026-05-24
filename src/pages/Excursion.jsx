@@ -316,7 +316,7 @@ function handleSubmit(e) {
                             <textarea className="bg-white/20 h-40 md:h-full w-full p-2 border-2 border-white rounded-3xl text-white" placeholder="Mensaje*" required></textarea>
                         </div>
 
-                        <Checkbox label="He leído y acepto la Política de Privacidad." />
+                        <Checkbox required label="He leído y acepto la Política de Privacidad." />
 
                         <div className="flex flex-col sm:flex-row gap-5 items-center sm:justify-center">
                             <Button type="submit">enviar mensaje</Button>
