@@ -346,7 +346,7 @@ export default function Excursion() {
                             )}
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-5 items-center sm:justify-center">
+                        <div className="flex flex-col sm:flex-row gap-5 items-center sm:justify-center md:col-span-2">
                             <Button type="submit">enviar mensaje</Button>
                             <Link
                                 to={!dia ? "#" : `/exc-config/${id}`} // Если нет даты, никуда не идем

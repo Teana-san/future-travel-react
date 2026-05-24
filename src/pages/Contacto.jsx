@@ -51,7 +51,7 @@ export default function Contacto() {
         const isChecked = e.target.checked;
         setAcceptedTerms(isChecked);
         if (isChecked) {
-            setErrores(prev => ({ ...prev, terms: "" }));
+            setErrorTerms("");
         }
     }
 
@@ -91,7 +91,7 @@ export default function Contacto() {
         }
 
         if (!acceptedTerms) {
-            setErrores(prev => ({ ...prev, terms: "Debe aceptar la Política de Privacidad para continuar" }));
+            setErrorTerms("Debe aceptar la Política de Privacidad para continuar");
             valido = false;
         }
 
@@ -200,9 +200,9 @@ export default function Contacto() {
                                 onChange={handleTermsChange}
                                 label="He leído y acepto la Política de Privacidad."
                             />
-                            {errores.terms && (
+                            {errorTerms && (
                                 <span className="text-red-500 text-sm pl-2 self-start bg-black/40 px-2 py-0.5 rounded-md">
-                                    {errores.terms}
+                                    {errorTerms}
                                 </span>
                             )}
                         </div>
