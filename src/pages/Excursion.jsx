@@ -43,26 +43,6 @@ export default function Excursion() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-    function handleTextoChange(e) {
-        const { name, value } = e.target;
-
-        if (/[0-9]/.test(value)) {
-            setErrores(prev => ({
-                ...prev,
-                [name]: `El ${name === "nombre" ? "nombre" : "apellido"} no puede contener números`
-            }));
-        } else {
-            setErrores(prev => ({ ...prev, [name]: "" }));
-        }
-
-        const onlyLetters = value.replace(/[^A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]/g, "");
-
-        setValores(prev => ({
-            ...prev,
-            [name]: onlyLetters
-        }));
-    }
-
 
     // --- ЗАГРУЗКА ДАННЫХ ИЗ LARAVEL ---
     useEffect(() => {
@@ -132,11 +112,34 @@ export default function Excursion() {
         setDia(e.target.value);
     }
 
+
+    function handleTextoChange(e) {
+        const { name, value } = e.target;
+
+        if (/[0-9]/.test(value)) {
+            setErrores(prev => ({
+                ...prev,
+                [name]: `El ${name === "nombre" ? "nombre" : "apellido"} no puede contener números`
+            }));
+        } else {
+            setErrores(prev => ({ ...prev, [name]: "" }));
+        }
+
+        const onlyLetters = value.replace(/[^A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]/g, "");
+
+        setValores(prev => ({
+            ...prev,
+            [name]: onlyLetters
+        }));
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
 
         setIsModalOpen(true);
-        e.target.reset();
+
+        setValores({ nombre: "", apellido: "" });
+        setErrores({ nombre: "", apellido: "" });
     }
 
     return (
