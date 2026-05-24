@@ -36,12 +36,16 @@ export default function Excursion() {
         correo: ""
     });
 
+    const [acceptedTerms, setAcceptedTerms] = useState(false);
+
     const [errores, setErrores] = useState({
         nombre: "",
         apellido: "",
-        correo: ""
+        correo: "",
+        terms: ""
     });
 
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
@@ -121,7 +125,7 @@ export default function Excursion() {
         if (name === "correo") {
             if (errores.correo) setErrores(prev => ({ ...prev, correo: "" }));
             setValores(prev => ({ ...prev, correo: value }));
-            return; 
+            return;
         }
 
         if (/[0-9]/.test(value)) {
@@ -141,7 +145,15 @@ export default function Excursion() {
         }));
     }
 
-function handleSubmit(e) {
+    function handleTermsChange(e) {
+        const isChecked = e.target.checked;
+        setAcceptedTerms(isChecked);
+        if (isChecked) {
+            setErrores(prev => ({ ...prev, terms: "" }));
+        }
+    }
+
+    function handleSubmit(e) {
         e.preventDefault();
 
         let valido = true;
@@ -167,12 +179,17 @@ function handleSubmit(e) {
             setErrores(prev => ({ ...prev, correo: "" }));
         }
 
+        if (!acceptedTerms) {
+            setErrores(prev => ({ ...prev, terms: "Debe aceptar la Política de Privacidad para continuar" }));
+            valido = false;
+        }
+
         if (!valido) return;
 
         setIsModalOpen(true);
 
         setValores({ nombre: "", apellido: "", correo: "" });
-        setErrores({ nombre: "", apellido: "", correo: "" });
+        setErrores({ nombre: "", apellido: "", correo: "", terms: "" });
 
         e.target.reset();
     }
@@ -300,15 +317,15 @@ function handleSubmit(e) {
                         <div className="flex flex-col gap-5">
                             <Input name="nombre" placeholder="Nombre*" value={valores.nombre} onChange={handleTextoChange} error={errores.nombre} variant="white" required />
                             <Input name="apellido" placeholder="Apellidos*" value={valores.apellido} onChange={handleTextoChange} error={errores.apellido} variant="white" required />
-                           <Input 
-                                type="email" 
+                            <Input
+                                type="email"
                                 name="correo"
-                                placeholder="Correo*" 
+                                placeholder="Correo*"
                                 value={valores.correo}
                                 onChange={handleTextoChange}
                                 error={errores.correo}
-                                variant="white" 
-                                required 
+                                variant="white"
+                                required
                             />
                         </div>
 
@@ -316,7 +333,18 @@ function handleSubmit(e) {
                             <textarea className="bg-white/20 h-40 md:h-full w-full p-2 border-2 border-white rounded-3xl text-white" placeholder="Mensaje*" required></textarea>
                         </div>
 
-                        <Checkbox required label="He leído y acepto la Política de Privacidad." />
+                        <div className="w-full md:col-span-2 flex flex-col gap-1">
+                            <Checkbox
+                                checked={acceptedTerms}
+                                onChange={handleTermsChange}
+                                label="He leído y acepto la Política de Privacidad."
+                            />
+                            {errores.terms && (
+                                <span className="text-red-500 text-sm pl-2 self-start bg-black/40 px-2 py-0.5 rounded-md">
+                                    {errores.terms}
+                                </span>
+                            )}
+                        </div>
 
                         <div className="flex flex-col sm:flex-row gap-5 items-center sm:justify-center">
                             <Button type="submit">enviar mensaje</Button>

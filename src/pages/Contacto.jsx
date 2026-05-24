@@ -17,11 +17,13 @@ export default function Contacto() {
     const [asunto, setAsunto] = useState("");
     const [nombre, setNombre] = useState("");
     const [correo, setCorreo] = useState("");
+    const [acceptedTerms, setAcceptedTerms] = useState(false);
 
     const [errorNombre, setErrorNombre] = useState("");
     const [errorCorreo, setErrorCorreo] = useState("");
     const [errorPais, setErrorPais] = useState("");
     const [errorAsunto, setErrorAsunto] = useState("");
+    const [errorTerms, setErrorTerms] = useState("");
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -43,6 +45,14 @@ export default function Contacto() {
         }
         const onlyLetters = value.replace(/[^A-Za-zА-Яа-яЁёáéíóúÁÉÍÓÚñÑüÜ\s]/g, "");
         setNombre(onlyLetters);
+    }
+
+    function handleTermsChange(e) {
+        const isChecked = e.target.checked;
+        setAcceptedTerms(isChecked);
+        if (isChecked) {
+            setErrores(prev => ({ ...prev, terms: "" }));
+        }
     }
 
     function handleSubmit(e) {
@@ -78,6 +88,11 @@ export default function Contacto() {
             valido = false;
         } else {
             setErrorAsunto("");
+        }
+
+        if (!acceptedTerms) {
+            setErrores(prev => ({ ...prev, terms: "Debe aceptar la Política de Privacidad para continuar" }));
+            valido = false;
         }
 
         if (!valido) return;
@@ -179,8 +194,17 @@ export default function Contacto() {
                             <textarea className="bg-white/20 h-full w-full p-2 border-2 border-white rounded-3xl text-white" placeholder="Mensaje*" required></textarea>
                         </div>
 
-                        <div className="w-full text-white">
-                            <Checkbox required label="He leído y acepto la Política de Privacidad." />
+                        <div className="w-full md:col-span-2 flex flex-col gap-1">
+                            <Checkbox
+                                checked={acceptedTerms}
+                                onChange={handleTermsChange}
+                                label="He leído y acepto la Política de Privacidad."
+                            />
+                            {errores.terms && (
+                                <span className="text-red-500 text-sm pl-2 self-start bg-black/40 px-2 py-0.5 rounded-md">
+                                    {errores.terms}
+                                </span>
+                            )}
                         </div>
 
                         <Button type="submit">

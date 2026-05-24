@@ -215,9 +215,9 @@ export default function ExcursionConfig() {
                             </div>
 
                             <div className="flex items-center gap-5">
-                                <Button onClick={handleAdultosPlus} disabled={adultos === 2}>+</Button>
-                                <span>{adultos}</span>
                                 <Button onClick={handleAdultosMinus} disabled={adultos === 1}>-</Button>
+                                <span>{adultos}</span>
+                                <Button onClick={handleAdultosPlus} disabled={adultos === 2}>+</Button>
                             </div>
                         </div>
 
@@ -228,9 +228,9 @@ export default function ExcursionConfig() {
                             </div>
 
                             <div className="flex items-center gap-5">
-                                <Button onClick={handleNinosPlus} disabled={ninos === 1}>+</Button>
-                                <span>{ninos}</span>
                                 <Button onClick={handleNinosMinus} disabled={ninos === 0}>-</Button>
+                                <span>{ninos}</span>
+                                <Button onClick={handleNinosPlus} disabled={ninos === 1}>+</Button>
                             </div>
                         </div>
                     </div>
@@ -240,9 +240,9 @@ export default function ExcursionConfig() {
                             <h3>Edad del niño:</h3>
 
                             <div className="flex items-center gap-5">
-                                <Button onClick={handleEdadPlus} disabled={edad === 17}>+</Button>
-                                <span>{edad}</span>
                                 <Button onClick={handleEdadMinus} disabled={edad === 0}>-</Button>
+                                <span>{edad}</span>
+                                <Button onClick={handleEdadPlus} disabled={edad === 17}>+</Button>
                             </div>
                         </div>
                     )}
